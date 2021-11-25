@@ -11,18 +11,19 @@ export const RegisterPage = () => {
     const [message, setMessage] = useState('');
 
     const onSubmit = (d) => {
-        console.log(d);
         const usr = localStorage.getItem(d.name) || false
         
-        console.log('pasa',usr);
         if (!usr) {
-            console.log('pasa1');
             setUser({
                 name: d.name,
                 usuario: d.usuario,
                 password: d.password
             });
-            
+            localStorage.setItem("sesion",JSON.stringify({
+                name: d.name,
+                usuario: d.usuario,
+                password: d.password
+            }));
             localStorage.setItem(d.name,JSON.stringify({
                 name: d.name,
                 usuario: d.usuario,
@@ -30,8 +31,6 @@ export const RegisterPage = () => {
             }));
             navigate("/home");
         } else {
-            console.log('pasa2');
-
             setMessage('El usuario ya existe');
         }
     }

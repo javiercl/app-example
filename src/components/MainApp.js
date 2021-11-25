@@ -3,8 +3,8 @@ import { AppRouter } from './routes/AppRouter'
 import { UserContext } from './UserContext'
 
 export const MainApp = () => {
-
-    const [user, setUser] = useState({});
+    const usr = localStorage.getItem("sesion")
+    const [user, setUser] = useState(usr ? JSON.parse(usr):{});
 
     const contextObject = {
         user,

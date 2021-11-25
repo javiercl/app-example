@@ -8,6 +8,12 @@ export const NavBar = () => {
 
     let navigate = useNavigate();
 
+    const handleCerrar = () => {
+        setUser({});
+        localStorage.removeItem("sesion");
+        navigate("/")
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
@@ -28,15 +34,16 @@ export const NavBar = () => {
                         </li>
                     </ul>
                     <span className="navbar-nav dropdown animate__animated animate__fadeIn" >
-                        <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                        <button type="button" className="btn btn-link nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">{user.usuario}</button>
+                        {/*<a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                             {user.usuario}
-                        </a>
+                        </a>*/}
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a className="dropdown-item"
-                                    onClick={()=>{ setUser({}); navigate("/") }}
+                                <button className="dropdown-item"
+                                    onClick={handleCerrar}
                                 >Cerrar sesión
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </span>

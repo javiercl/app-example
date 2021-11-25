@@ -22,6 +22,11 @@ export const LoginPage = () => {
                 usuario: ousr.usuario,
                 password: ousr.password
             });
+            localStorage.setItem("sesion",JSON.stringify({
+                name: ousr.name,
+                usuario: ousr.usuario,
+                password: ousr.password
+            }));
             navigate("/home");
         }
     }
