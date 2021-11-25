@@ -11,15 +11,18 @@ export const RegisterPage = () => {
     const [message, setMessage] = useState('');
 
     const onSubmit = (d) => {
-        //console.log(d.usuario);
-        const usr = localStorage.getItem(d.name)
-
+        console.log(d);
+        const usr = localStorage.getItem(d.name) || false
+        
+        console.log('pasa',usr);
         if (!usr) {
+            console.log('pasa1');
             setUser({
                 name: d.name,
                 usuario: d.usuario,
                 password: d.password
             });
+            
             localStorage.setItem(d.name,JSON.stringify({
                 name: d.name,
                 usuario: d.usuario,
@@ -27,11 +30,11 @@ export const RegisterPage = () => {
             }));
             navigate("/home");
         } else {
+            console.log('pasa2');
+
             setMessage('El usuario ya existe');
         }
-        
     }
-
 
     return (
         <div>
@@ -43,15 +46,15 @@ export const RegisterPage = () => {
                 }
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-3">
-                        <label for="nameUser" className="form-label">Username</label>
+                        <label  className="form-label">Username</label>
                         <input type="text" className="form-control" id="nameUser" aria-describedby="Name user" {...register("usuario")}/>
                     </div>
                     <div className="mb-3">
-                        <label for="name" className="form-label">Login user</label>
-                        <input type="text" className="form-control" id="name" aria-describedby="User" {...register("name")}/>
+                        <label className="form-label">Login user</label>
+                        <input type="text" className="form-control" id="clave" aria-describedby="User" {...register("name")}/>
                     </div>
                     <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Password</label>
+                        <label className="form-label">Password</label>
                         <input type="password" className="form-control" id="exampleInputPassword1" {...register("password")}/>
                     </div>
                     <button type="submit" className="btn btn-primary">Register</button>

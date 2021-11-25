@@ -21,14 +21,14 @@ export const NavBar = () => {
                     <>
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                        <NavLink activeClassName="active" className="nav-link" to="/home">Dashboard</NavLink>
+                        <NavLink  className="nav-link" to="/home">Dashboard</NavLink>
                         </li>
                         <li className="nav-item">
-                        <NavLink activeClassName="active" className="nav-link" to="/about">About</NavLink>
+                        <NavLink  className="nav-link" to="/about">About</NavLink>
                         </li>
                     </ul>
                     <span className="navbar-nav dropdown animate__animated animate__fadeIn" >
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                             {user.usuario}
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
