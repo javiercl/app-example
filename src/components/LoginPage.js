@@ -1,25 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { UserContext } from './UserContext';
+import { MessageBar } from './MessageBar';
 
 export const LoginPage = () => {
-
-    const { user, setUser } = useContext( UserContext );
-
+    const [ message, setMessage] = useState('');
+    const { setUser } = useContext( UserContext );
     const navigate = useNavigate();
-
     const { register, handleSubmit } = useForm();
 
 
     const onSubmit = (d) => {
-        //console.log(d.usuario);
-        setUser({
-            name: d.usuario,
-            password: d.password
-        });
-        localStorage.setItem("sesion",JSON.stringify(user));
-        navigate("/home");
+        const usr = localStorage.getItem(d.usuario)
+        if (!usr) {
+            setMessage('El usuario no existe');
+        } else {
+            const ousr = JSON.parse(usr);
+            setUser({
+                name: ousr.name,
+                usuario: ousr.usuario,
+                password: ousr.password
+            });
+            navigate("/home");
+        }
     }
 
     return (
@@ -27,6 +31,9 @@ export const LoginPage = () => {
             <h1>LoginPage</h1>
             <hr />
             <div className="card p-3">
+                {
+                    message ? <MessageBar message={message}/> : <div/>
+                }
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-3">
                         <label for="exampleInputEmail1" className="form-label">Email address</label>

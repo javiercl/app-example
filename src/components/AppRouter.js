@@ -10,6 +10,7 @@ import { AboutPage } from './AboutPage';
 import { LoginPage } from './LoginPage';
 import { PublicPage } from './PublicPage';
 import { HomePage } from './HomePage';
+import { RegisterPage } from './RegisterPage';
 
 export const AppRouter = () => {
     return (
@@ -22,6 +23,7 @@ export const AppRouter = () => {
                         <Route exact path="/home" element={ <HomePage/> } />
                         <Route exact path="/about" element={ <AboutPage/> } />
                         <Route exact path="/login" element={ <LoginPage/> } />                        
+                        <Route exact path="/register" element={ <RegisterPage/> } />                        
                         <Route to="/" />
                     </Routes>
                 </div>

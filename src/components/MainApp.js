@@ -7,8 +7,10 @@ export const MainApp = () => {
 
     const contextObject = {
         user,
-        setUser
+        setUser,
     }
+
+    //console.log(JSON.stringify(contextObject));
 
     return (
         <UserContext.Provider value={ contextObject }>

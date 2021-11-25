@@ -29,11 +29,11 @@ export const NavBar = () => {
                     </ul>
                     <span className="navbar-nav dropdown animate__animated animate__fadeIn" >
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {user.name}
+                            {user.usuario}
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a className="dropdown-item" 
+                                <a className="dropdown-item"
                                     onClick={()=>{ setUser({}); navigate("/") }}
                                 >Cerrar sesión
                                 </a>
@@ -46,7 +46,7 @@ export const NavBar = () => {
                     <ul className="navbar-nav">
                     </ul>
                     <div className="animate__animated animate__fadeIn">
-                        <button type="button" className="btn btn-primary" >Sign Up</button>
+                        <button type="button" className="btn btn-primary" onClick={()=>{navigate("/register")}}>Sign Up</button>
                         <span> </span>
                         <button type="button" className="btn btn-success" onClick={()=>{navigate("/login")}}>Log In</button>
                     </div>
